@@ -4,30 +4,17 @@ import { BsArrowsFullscreen } from "react-icons/bs";
 import { IoIosGitCompare } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addCartAction } from "../../redux/action/actions";
-import { useState } from "react";
+import { addCartAction, addWishlistAction } from "../../redux/action/actions";
 
 export default function ShopListItemGrid(props) {
   const dispatch = useDispatch()
-
-
-
-
-
-  // const [cardItems, setCardItems] = useState([]);
-
-  // const handleCard = () => {
-  //   setCardItems([])
-  // }
-
-
 
   return (
     <div className="ShopListItemGrid" style={{ width: `${props.width}` }}>
       <div className="slig-img">
         <img alt="item" src={props.photo}></img>
         <div className="slig-adding">
-            <p>
+            <p onClick={()=>dispatch(addWishlistAction(props.id, props.title, props.price, props.photo))}>
               <FiHeart className="addIcon heart" />
             </p>
             <p>

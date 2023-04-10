@@ -91,7 +91,8 @@
 }
 
 
-.card-length {
+.card-length,
+.list-length {
   color: white;
   position: absolute;
   top: 0.7px;

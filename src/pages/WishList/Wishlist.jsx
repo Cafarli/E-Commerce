@@ -1,9 +1,17 @@
 import "./Wishlist.css";
-import cartImg from "../../images/cart/cartImg.jpg";
 import PagePath from "../../components/PagePath/PagePath";
 import { TiDeleteOutline } from "react-icons/ti";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addCartAction,
+  removeAllWishlistAction,
+  removeWishlistAction,
+} from "../../redux/action/actions";
 
 export default function Wishlist() {
+  const dispatch = useDispatch();
+  const favoAdded = useSelector((state) => state["favorities"]);
+  console.log(favoAdded);
   return (
     <div className="WishlistPage">
       <PagePath title="Wishlist" curPage="Wishlist" />
@@ -19,26 +27,42 @@ export default function Wishlist() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="wlImgCol">
-                <div className="wlImg">
-                  <img alt="wlduct" src={cartImg}></img>
-                </div>
-              </td>
-              <td className="wlName">Twist Dining Table</td>
-              <td className="wlPrice">288.0</td>
-              <td className="wlAdding">
-                <div className="wl-addCart">
-                    <button>Add to Cart</button>
-                </div>
-                </td>              
-              <td className="wlDel">
-                <TiDeleteOutline className="wlDelIcon" />
-              </td>
-            </tr>
-            
+            {!!favoAdded.length &&
+              favoAdded !== undefined &&
+              favoAdded.filter((fp,i)=>i>0).map((f, ind) => {
+                return (
+                  <tr>
+                    <td className="wlImgCol">
+                      <div className="wlImg">
+                        <img alt="wlduct" src={f.Photo}></img>
+                      </div>
+                    </td>
+                    <td className="wlName">{f.Title}</td>
+                    <td className="wlPrice">{f.Price}</td>
+                    <td className="wlAdding">
+                      <div className="wl-addCart">
+                        <button onClick={()=>dispatch(addCartAction(f.Id, f.Title, f.Price, f.Photo))}>Add to Cart</button>
+                      </div>
+                    </td>
+                    <td className="wlDel">
+                      <TiDeleteOutline
+                        className="wlDelIcon"
+                        onClick={() => dispatch(removeWishlistAction(f.Id))}
+                      />
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
+        <div className="wlButton">
+          <button
+            className="clearList"
+            onClick={() => dispatch(removeAllWishlistAction(0))}
+          >
+            Clear Cart
+          </button>
+        </div>
       </div>
     </div>
   );

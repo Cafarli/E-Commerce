@@ -1,6 +1,5 @@
 import "./ShopList.css";
 import ShopListItemGrid from "../../components/ShopListItemGrid/ShopListItemGrid";
-import PagePath from "../../components/PagePath/PagePath";
 import Brands from "../../components/Brands/Brands";
 import ShopSideBar from "../../components/shopSideBar/shopSideBar";
 import { HiViewGrid } from "react-icons/hi";
@@ -66,7 +65,6 @@ console.log(handleCard)
 
   return (
     <div className="ShopList">
-      {/* <PagePath title="Shop" path="/shop" curPage="Shop" /> */}
 
       <div className="list-about">
         <div className="la-title">
@@ -123,7 +121,6 @@ console.log(handleCard)
           product
             .filter((p, i) => i < 12)
             .map((pr, index) => {
-              // console.log(index)
               return (
                 <ShopListItemGrid
                   key={index}
@@ -134,14 +131,6 @@ console.log(handleCard)
                 />
               );
             })}
-          {/* <ShopListItemGrid id='1' title="Accumsan tincidunt" price="260.00" /> */}
-          {/* <ShopListItemGrid title="Accumsan tincidunt" price="260.00" />
-          <ShopListItemGrid title="Accumsan tincidunt" price="260.00" />
-          <ShopListItemGrid title="Accumsan tincidunt" price="260.00" />
-          <ShopListItemGrid title="Accumsan tincidunt" price="260.00" />
-          <ShopListItemGrid title="Accumsan tincidunt" price="260.00" />
-          <ShopListItemGrid title="Accumsan tincidunt" price="260.00" />
-          <ShopListItemGrid title="Accumsan tincidunt" price="260.00" /> */}
         </div>
       </div>
       <Brands />

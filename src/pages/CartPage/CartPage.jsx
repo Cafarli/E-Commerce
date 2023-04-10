@@ -1,11 +1,13 @@
 import "./CartPage.css";
 import { useState } from "react";
 import PagePath from "../../components/PagePath/PagePath";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Cart from "./cart";
+import { removeAllCartAction } from "../../redux/action/actions";
 
 export default function CartPage() {
+  const dispatch = useDispatch()
   const addedProducts = useSelector((state) => state["products"]);
 
 
@@ -79,7 +81,7 @@ export default function CartPage() {
             <button className="applyCoupon">Apply Coupon</button>
           </div>
           <div className="cp-buttons">
-            <button className="cp-btn clearCart">Clear Cart</button>
+            <button className="cp-btn clearCart" onClick={()=>dispatch(removeAllCartAction(0))}>Clear Cart</button>
             <button className="cp-btn shopCart">Shop</button>
           </div>
         </div>

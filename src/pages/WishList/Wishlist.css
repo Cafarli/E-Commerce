@@ -87,3 +87,28 @@
     height: 1.5em;
     cursor: pointer;
 }
+
+
+/* clear wishlist */
+.wlButton {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5%;
+}
+
+.clearList {
+    width: 17%;
+    padding: 1% 0;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: var(--yellow-color);
+    transition: background-color 0.5s ease-in-out ;
+    -webkit-transition: background-color 0.5s ease-in-out ;
+    color: white;
+}
+
+.clearList:hover {
+    background-color: var(--yellow-color) ;
+}

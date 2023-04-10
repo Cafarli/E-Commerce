@@ -32,7 +32,6 @@ export default function NavbarPart() {
             Sofas
           </NavDropdown.Item>
         </NavDropdown>
-        {/* <Nav.Link href="/products">Products</Nav.Link> */}
         <Nav.Link href="/blogs">Blog</Nav.Link>
         <Nav.Link href="/shop">Shop</Nav.Link>
       </div>

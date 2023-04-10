@@ -1,3 +1,4 @@
+import "./HeadingBar.css";
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
@@ -7,8 +8,6 @@ import { BsHeart, BsCart2 } from "react-icons/bs";
 import NavbarPart from "./Navbar";
 import { slide as Menu } from "react-burger-menu";
 import { useState, useEffect, useRef } from "react";
-import "./HeadingBar.css";
-import { useLayoutEffect } from "react";
 import { useSelector } from "react-redux";
 
 export default function HeadingBar() {
@@ -24,9 +23,22 @@ export default function HeadingBar() {
     }
   };
 
-  const addedProducts1 = useSelector((state)=>state['products']);
+  const addedProductsLength = useSelector((state)=>state['products']);
+  if(addedProductsLength.length!==0){
+    var cardItem = addedProductsLength.length-1;
+  }
+  else {
+    cardItem = addedProductsLength.length;
+  }
 
-  var cardItem = addedProducts1.length-1;
+  
+  const favoProductsLength = useSelector((state)=>state['favorities']);
+  if(favoProductsLength.length!==0){
+    var wishItem = favoProductsLength.length-1;
+  }
+  else {
+    wishItem = favoProductsLength.length;
+  }
 
   const refContainer = useRef();
   // get width of window
@@ -89,6 +101,9 @@ export default function HeadingBar() {
           <div className="headerdroplistitem">
             <Link to="/wishlist">
               <BsHeart className="header-icon" />
+              <span className="list-length">
+                  {wishItem === 0 ? "" : wishItem}
+              </span>
             </Link>
           </div>
 
