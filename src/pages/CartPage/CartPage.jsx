@@ -48,10 +48,13 @@ export default function CartPage() {
               addedProducts
                 .filter((item, i) => i >= 1)
                 .map((product, ind) => {
+                  {/* console.log(product) */}
                   return (
+                    
                     <Cart
                       key={product.Id}
                       ind={ind}
+                      Qty={product.Qty}
                       Photo={product.Photo}
                       Title={product.Title}
                       Price={product.Price}

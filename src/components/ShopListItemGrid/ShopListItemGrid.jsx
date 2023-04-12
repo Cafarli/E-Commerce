@@ -25,7 +25,7 @@ export default function ShopListItemGrid(props) {
             </p>
         </div>
         <div className="slig-addingCart">
-          <button onClick={()=>dispatch(addCartAction(props.id, props.title, props.price, props.photo))}>
+          <button onClick={()=>dispatch(addCartAction(props.id, props.title, props.price, props.photo, 1))}>
             <FiShoppingCart className="addIcon cart" />
             Add to Cart
           </button>

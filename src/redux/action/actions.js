@@ -1,9 +1,9 @@
 import { ACTION_TYPES } from "../action/actionTypes";
 
-export const addCartAction = (id, title, price, photo) => {
+export const addCartAction = (id, title, price, photo, qty) => {
   return {
     type: ACTION_TYPES.ADD_CART,
-    products: { Id: id, Title: title, Price: price, Photo: photo },
+    products: { Id: id, Title: title, Price: price, Photo: photo, Qty: qty },
   };
 };
 export const removeCartAction = (id) => {
@@ -18,6 +18,19 @@ export const removeAllCartAction = (id) => {
     products: { Id: id },
   };
 };
+export const increaseQtyAction = (id) => {
+  return {
+    type: ACTION_TYPES.INCREASE_QTY,
+    products: { Id: id },
+  };
+};
+export const decreaseQtyAction = (id) => {
+  return {
+    type: ACTION_TYPES.DECREASE_QTY,
+    products: { Id: id },
+  };
+};
+
 
 export const addWishlistAction = (id, title, price, photo) => {
   return {

@@ -31,7 +31,7 @@ export default function Wishlist() {
               favoAdded !== undefined &&
               favoAdded.filter((fp,i)=>i>0).map((f, ind) => {
                 return (
-                  <tr>
+                  <tr key={ind}>
                     <td className="wlImgCol">
                       <div className="wlImg">
                         <img alt="wlduct" src={f.Photo}></img>

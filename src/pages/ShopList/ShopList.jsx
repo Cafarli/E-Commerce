@@ -10,15 +10,15 @@ import { useState, useEffect, useRef } from "react";
 export default function ShopList(handleCard) {
   const [product, setProduct] = useState();
   const addedProducts = useSelector((state)=>state['products']);
-  console.log(addedProducts);
+  // console.log(addedProducts);
 
   // handleCard = addedProducts.length -1
-console.log(handleCard)
+// console.log(handleCard)
   // for(let i=0; i<addedProducts.length;i++){
   //   // handleCard.push(i)
   // }
 
-  console.log(handleCard)
+  // console.log(handleCard)
   useEffect(() => {
     fetch("https://api.escuelajs.co/api/v1/products")
       .then((res) => res.json())
