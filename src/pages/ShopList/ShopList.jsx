@@ -19,14 +19,13 @@ export default function ShopList(handleCard) {
   const [filterShow, setFilterShow] = useState(false);
   const handleFilterShow = () => {
     setFilterShow(!filterShow);
-    if(filterShow){
-      document.body.style.overflow="auto";
-    }
-    else {
-      document.body.style.overflow="hidden";
+    if (filterShow) {
+      document.body.style.overflow = "auto";
+    } else {
+      document.body.style.overflow = "hidden";
     }
   };
- 
+
   // ------
   const refContainer = useRef(null);
   // get width of window
@@ -41,8 +40,6 @@ export default function ShopList(handleCard) {
     });
   };
 
-
-
   useEffect(() => {
     window.addEventListener("resize", setDimension);
 
@@ -51,11 +48,8 @@ export default function ShopList(handleCard) {
     };
   }, [screenSize]);
 
-
-
   return (
     <div className="ShopList">
-
       <div className="list-about">
         <div className="la-title">
           <h1>Fashion Item</h1>
@@ -63,9 +57,7 @@ export default function ShopList(handleCard) {
         </div>
         <div className="list-filter">
           <div className="filterButton">
-            <button
-              onClick={handleFilterShow}
-            >
+            <button onClick={handleFilterShow}>
               <MdOutlineFilterList className="filterIcon-shop" />
               Filter
             </button>
@@ -87,9 +79,15 @@ export default function ShopList(handleCard) {
           </select>
         </div>
       </div>
-      <div className="allShopList" style={{width: filterShow ? "100%" : "85%"}}>
+      <div
+        className="allShopList"
+        style={{ width: filterShow ? "100%" : "85%" }}
+      >
         {screenSize.dynamicWidth < 991 ? (
-          <div className="menuSideBar" style={{width: filterShow ? "100%" : "0%"}}>
+          <div
+            className="menuSideBar"
+            style={{ width: filterShow ? "100%" : "0%" }}
+          >
             {filterShow ? (
               <div className="filterMenu">
                 <div className="close-menu" onClick={handleFilterShow}>
@@ -105,12 +103,10 @@ export default function ShopList(handleCard) {
           </div>
         )}
 
-        <div className="gridProducts" >
-        {product !== undefined &&
-          !!product.length &&
-          product
-            .filter((p, i) => i < 12)
-            .map((pr, index) => {
+        <div className="gridProducts">
+          {product !== undefined &&
+            !!product.length &&
+            product.slice(1, 15).map((pr, index) => {
               return (
                 <ShopListItemGrid
                   key={index}

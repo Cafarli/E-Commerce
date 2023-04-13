@@ -36,7 +36,7 @@ export default function CartPage() {
             {addedProducts !== undefined &&
               !!addedProducts.length &&
               addedProducts
-                .filter((item, i) => i >= 1)
+                .slice(1)
                 .map((product, ind) => {
                   return (
                     <Cart

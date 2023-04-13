@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 
 const initialState = {
   products: [{ Id: "", Title: "", Price: "", Photo: "", Qty: 1 }],
-  favorities: [{ Id: "", Title: "", Price: "", Photo: "" }],
+  favorities: [{ Id: "", Title: "", Price: "", Photo: "" , Qty: 1 }],
   totalPrice: 0,
 };
 
@@ -69,11 +69,21 @@ export function Reducers(state = initialState, action) {
 
     // wishlist
     case ACTION_TYPES.ADD_WISHLIST:
-      const findInWsihlist = state.favorities.find(
+      const findWishList = state.favorities.find(
         (item) => item.Id === action.favorities.Id
       );
-      return findInWsihlist !== undefined
-        ? state
+      return findWishList !== undefined
+        ? {
+            ...state,
+            ...state.favorities.map((item) =>
+              item.Id === action.favorities.Id
+                ? {
+                    ...item,
+                    Qty: item.Qty + 1,
+                  }
+                : item
+            ),
+          }
         : {
             ...state,
             favorities: [...state.favorities, action.favorities],

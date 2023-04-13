@@ -14,7 +14,7 @@ export default function ShopListItemGrid(props) {
       <div className="slig-img">
         <img alt="item" src={props.photo}></img>
         <div className="slig-adding">
-            <p onClick={()=>dispatch(addWishlistAction(props.id, props.title, props.price, props.photo))}>
+            <p onClick={()=>dispatch(addWishlistAction(props.id, props.title, props.price, props.photo, 1))}>
               <FiHeart className="addIcon heart" />
             </p>
             <p>

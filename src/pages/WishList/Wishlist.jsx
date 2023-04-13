@@ -29,7 +29,8 @@ export default function Wishlist() {
           <tbody>
             {!!favoAdded.length &&
               favoAdded !== undefined &&
-              favoAdded.filter((fp,i)=>i>0).map((f, ind) => {
+              favoAdded.slice(1).map((f, ind) => {
+                
                 return (
                   <tr key={ind}>
                     <td className="wlImgCol">
@@ -41,7 +42,7 @@ export default function Wishlist() {
                     <td className="wlPrice">{f.Price}</td>
                     <td className="wlAdding">
                       <div className="wl-addCart">
-                        <button onClick={()=>dispatch(addCartAction(f.Id, f.Title, f.Price, f.Photo))}>Add to Cart</button>
+                        <button onClick={()=>dispatch(addCartAction(f.Id, f.Title, f.Price, f.Photo, f.Qty))}>Add to Cart</button>
                       </div>
                     </td>
                     <td className="wlDel">
@@ -60,7 +61,7 @@ export default function Wishlist() {
             className="clearList"
             onClick={() => dispatch(removeAllWishlistAction(0))}
           >
-            Clear Cart
+            Clear Wishlist
           </button>
         </div>
       </div>

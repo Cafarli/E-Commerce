@@ -30,11 +30,10 @@ export const decreaseQtyAction = (id) => {
     products: { Id: id },
   };
 };
-
-export const addWishlistAction = (id, title, price, photo) => {
+export const addWishlistAction = (id, title, price, photo, qty) => {
   return {
     type: ACTION_TYPES.ADD_WISHLIST,
-    favorities: { Id: id, Title: title, Price: price, Photo: photo },
+    favorities: { Id: id, Title: title, Price: price, Photo: photo, Qty: qty },
   };
 };
 export const removeWishlistAction = (id) => {

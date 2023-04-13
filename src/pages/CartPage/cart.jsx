@@ -6,6 +6,7 @@ import {  decreaseQtyAction, increaseQtyAction, removeCartAction } from "../../r
 export default function Cart(props) {
 
   const dispatch = useDispatch();
+  console.log(props.Qty);
 
   return (
     <tr key={props.ind}>
@@ -22,7 +23,8 @@ export default function Cart(props) {
             -
           </p>
           <p className="qb-value" >
-            {props.Qty}
+          {props.Qty}
+            {/* {props.Qty!==undefined? props.Qty :1} */}
           </p>
           <p className="qb-plus" onClick={()=>dispatch(increaseQtyAction(props.Id))}>
             +
