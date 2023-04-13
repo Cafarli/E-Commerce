@@ -4,21 +4,11 @@ import Brands from "../../components/Brands/Brands";
 import ShopSideBar from "../../components/shopSideBar/shopSideBar";
 import { HiViewGrid } from "react-icons/hi";
 import { MdViewList, MdOutlineFilterList, MdClose } from "react-icons/md";
-import { useSelector } from "react-redux";
 import { useState, useEffect, useRef } from "react";
 
 export default function ShopList(handleCard) {
   const [product, setProduct] = useState();
-  const addedProducts = useSelector((state)=>state['products']);
-  // console.log(addedProducts);
 
-  // handleCard = addedProducts.length -1
-// console.log(handleCard)
-  // for(let i=0; i<addedProducts.length;i++){
-  //   // handleCard.push(i)
-  // }
-
-  // console.log(handleCard)
   useEffect(() => {
     fetch("https://api.escuelajs.co/api/v1/products")
       .then((res) => res.json())

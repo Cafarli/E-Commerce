@@ -4,11 +4,10 @@ import { combineReducers } from "redux";
 const initialState = {
   products: [{ Id: "", Title: "", Price: "", Photo: "", Qty: 1 }],
   favorities: [{ Id: "", Title: "", Price: "", Photo: "" }],
-  totalPrice: "",
+  totalPrice: 0,
 };
 
 export function Reducers(state = initialState, action) {
-  console.log("reducers", state.products.Qty);
   switch (action.type) {
     case ACTION_TYPES.ADD_CART:
       const findInCart = state.products.find(

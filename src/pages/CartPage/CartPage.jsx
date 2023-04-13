@@ -1,31 +1,21 @@
 import "./CartPage.css";
-import { useState } from "react";
 import PagePath from "../../components/PagePath/PagePath";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import Cart from "./cart";
 import { removeAllCartAction } from "../../redux/action/actions";
 
 export default function CartPage() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const addedProducts = useSelector((state) => state["products"]);
+  let total = useSelector((state) => state["totalPrice"]);
 
-
-  const [total, setTotal] = useState(0);
-
-  const handleTotal = (value) => {
-    setTotal(total + value);
-  };
-
-  useEffect(() => {
-    // addedProducts !== undefined &&
-    //   !!addedProducts.length &&
-    //   addedProducts
-    //     .filter((i) => i >= 1)
-    //     .map((product) => {
-          
-    //     });
-  });
+  addedProducts !== undefined &&
+    !!addedProducts.length &&
+    addedProducts
+      .filter((item, i) => i >= 1)
+      .map((product, ind) => {
+        return (total += product.Qty * product.Price);
+      });
 
   return (
     <div className="CartPage">
@@ -48,9 +38,7 @@ export default function CartPage() {
               addedProducts
                 .filter((item, i) => i >= 1)
                 .map((product, ind) => {
-                  {/* console.log(product) */}
                   return (
-                    
                     <Cart
                       key={product.Id}
                       ind={ind}
@@ -59,7 +47,6 @@ export default function CartPage() {
                       Title={product.Title}
                       Price={product.Price}
                       Id={product.Id}
-                      handleTotal={handleTotal}
                     />
                   );
                 })}
@@ -70,7 +57,7 @@ export default function CartPage() {
               <td></td>
               <td></td>
               <td>
-                <p className="gt-txt">Grand Total: </p>
+                <p className="gt-txt">Total: </p>
               </td>
               <td>
                 <p className="gt-total">&#8380; {total}</p>
@@ -84,7 +71,12 @@ export default function CartPage() {
             <button className="applyCoupon">Apply Coupon</button>
           </div>
           <div className="cp-buttons">
-            <button className="cp-btn clearCart" onClick={()=>dispatch(removeAllCartAction(0))}>Clear Cart</button>
+            <button
+              className="cp-btn clearCart"
+              onClick={() => dispatch(removeAllCartAction(0))}
+            >
+              Clear Cart
+            </button>
             <button className="cp-btn shopCart">Shop</button>
           </div>
         </div>

@@ -1,32 +1,11 @@
 import "./CartPage.css";
-import { useEffect, useState } from "react";
 import { TiDeleteOutline } from "react-icons/ti";
 import { useDispatch } from "react-redux";
-import { decreaseQtyAction, increaseQtyAction, removeCartAction } from "../../redux/action/actions";
+import {  decreaseQtyAction, increaseQtyAction, removeCartAction } from "../../redux/action/actions";
 
 export default function Cart(props) {
-  useEffect(() => {
-    
-    // props.handleTotal(props.Price)
-    console.log("cart",props);
-  });
-  
-  const dispatch = useDispatch();
-  // const [qty, setQty] = useState(1);
 
-  // function counterMinus() {
-  //   if (qty === 1) {
-  //     setQty(1);
-  //     props.handleTotal(props.Price);
-  //   } else {
-  //     setQty(qty - 1);
-  //     props.handleTotal(props.Price * (qty - 1));
-  //   }
-  // }
-  // function counterPlus() {
-  //   setQty(qty + 1);
-  //   props.handleTotal(props.Price * (qty + 1));
-  // }
+  const dispatch = useDispatch();
 
   return (
     <tr key={props.ind}>

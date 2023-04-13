@@ -31,7 +31,6 @@ export const decreaseQtyAction = (id) => {
   };
 };
 
-
 export const addWishlistAction = (id, title, price, photo) => {
   return {
     type: ACTION_TYPES.ADD_WISHLIST,
