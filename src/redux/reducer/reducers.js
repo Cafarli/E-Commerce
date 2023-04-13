@@ -44,32 +44,30 @@ export function Reducers(state = initialState, action) {
           ...state.products.filter((item) => item.Id === action.products.Id),
         ],
       };
-    case ACTION_TYPES.DECREASE_QTY:
-      return  {
+
+    case ACTION_TYPES.INCREASE_QTY:
+      return {
         ...state,
         products: [
-          ...state.products.map((item)=> {
-            return (
-              (item.Id=== action.products.Id) ?
-             item.Qty>1 ? item.Qty -= 1 : item.Qty=1  
-            : null
-            )
-          })
-        ]
+          ...state.products.map((item) => {
+            return item.Id === action.products.Id
+              ? { ...item, Qty: item.Qty + 1 }
+              : item;
+          }),
+        ],
       };
-      case ACTION_TYPES.INCREASE_QTY:
-        return  {
-          ...state,
-          products: [
-            ...state.products.map((item)=> {
-              return (
-              (item.Id=== action.products.Id) ?
-                item.Qty += 1 
-            : null
-            )
-            })
-          ]
-        };
+    case ACTION_TYPES.DECREASE_QTY:
+      return {
+        ...state,
+        products: [
+          ...state.products.map((item) => {
+            return item.Id === action.products.Id
+              ? { ...item, Qty: item.Qty===1 ? 1 : item.Qty - 1 }
+              : item;
+          }),
+        ],
+      };
+
     // wishlist
     case ACTION_TYPES.ADD_WISHLIST:
       const findInWsihlist = state.favorities.find(
